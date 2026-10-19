@@ -111,7 +111,7 @@ public class Login {
         cardContainer.setOrientation(LinearLayout.VERTICAL);
         cardContainer.setGravity(Gravity.CENTER);
 
-        initPremiumLoginUI(cardContainer, savedKey);
+        initPremiumLoginUI(cardContainer, savedUser, savedPass);
 
         rootContainer.addView(cardContainer);
         rootContainer.setAlpha(0f);
@@ -177,7 +177,7 @@ public class Login {
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    private void initPremiumLoginUI(LinearLayout container_login, String savedKey) {
+    private void initPremiumLoginUI(LinearLayout container_login, String savedUser, String savedPass) {
         container_login.setOrientation(LinearLayout.VERTICAL);
         container_login.setGravity(Gravity.CENTER);
         container_login.setBackgroundColor(Color.TRANSPARENT);
@@ -281,7 +281,7 @@ public class Login {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             saveCheckBox.setButtonTintList(android.content.res.ColorStateList.valueOf(PrimaryColor));
         }
-        if (savedKey != null && !savedKey.isEmpty()) saveCheckBox.setChecked(true);
+        if (savedUser != null && !savedUser.isEmpty()) saveCheckBox.setChecked(true);
         LinearLayout.LayoutParams cbParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         cbParams.topMargin = dp(8);
         cbParams.gravity = Gravity.LEFT;

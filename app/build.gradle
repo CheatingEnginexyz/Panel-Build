@@ -61,6 +61,7 @@ android {
                 'lib/armeabi-v7a/libshadowhook.so',
                 'lib/armeabi-v7a/libshadowhook_nothing.so'
             ]
+        }
     }
 }
 
