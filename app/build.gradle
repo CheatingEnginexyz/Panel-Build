@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.zscheat'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.zscheat"
+        minSdk 19
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+    }
+
+    signingConfigs {
+        debug {
+            // Standard Android debug keystore
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/jniLibs']
+        }
+    }
+
+    packaging {
+        resources {
+            excludes += ['META-INF/DEPENDENCIES', 'META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/LICENSE.txt']
+        }
+        jniLibs {
+            pickFirsts += [
+                'lib/armeabi-v7a/libchalbhaglawde.so',
+                'lib/armeabi-v7a/libgameloader.so',
+                'lib/armeabi-v7a/libinjectMobile.so',
+                'lib/armeabi-v7a/libinjectEmulator.so',
+                'lib/armeabi-v7a/libshadowhook.so',
+                'lib/armeabi-v7a/libshadowhook_nothing.so'
+            ]
+    }
+}
+
+dependencies {
+    implementation 'com.bytedance.android:shadowhook:1.1.1'
+    implementation 'com.github.topjohnwu.libsu:core:5.1.0'
+}
